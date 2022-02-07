@@ -35,4 +35,4 @@ setup (name = 'mv_extractor',
        package_dir = {'mv_extractor': 'src'},
        python_requires='>=3.6, <3.12',
        setup_requires=['wheel>=0.33.6', 'numpy>=1.17.0,<1.18'],
-       install_requires=['pkgconfig>=1.5.1,<1.6', 'numpy>=1.17.0,<1.18', 'opencv-python>=4.1.0.25,<4.2'])
+       install_requires=['pkgconfig>=1.5.1,<1.6', 'numpy>=1.17.0,<1.18'])

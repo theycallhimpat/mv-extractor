@@ -26,7 +26,6 @@ RUN apt-get update && \
     pkg-config \
     python3-dev \
     python3-pip \
-    python3-numpy \
     python3-pkgconfig && \
     rm -rf /var/lib/apt/lists/*
 
@@ -69,6 +68,8 @@ WORKDIR /home/video_cap
 
 COPY setup.py /home/video_cap
 COPY src /home/video_cap/src/
+
+RUN python3 -m pip install numpy==1.17.5
 
 # Install Python package
 COPY vid.mp4 /home/video_cap
