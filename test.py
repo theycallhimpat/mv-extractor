@@ -1,3 +1,4 @@
+import sys
 import time
 
 import numpy as np
@@ -18,7 +19,10 @@ def draw_motion_vectors(frame, motion_vectors):
 if __name__ == "__main__":
 
     # filename of the video file
-    url = "vid.mp4"
+    if len(sys.argv) > 1:
+        url = sys.argv[1]
+    else:
+        url = "vid.mp4"
 
     cap = VideoCap()
 
