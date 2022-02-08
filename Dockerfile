@@ -54,6 +54,11 @@ RUN cd /home/video_cap && ./install.sh
 # Install FFMPEG dependencies
 RUN apt-get update -qq --fix-missing && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
+	autoconf \
+	automake \
+	build-essential \
+	cmake \
+	git-core \
         libass-dev \
         libfreetype6-dev \
         libsdl2-dev \
@@ -64,17 +69,25 @@ RUN apt-get update -qq --fix-missing && \
         libxcb1-dev \
         libxcb-shm0-dev \
         libxcb-xfixes0-dev \
+        libgnutls28-dev \
+        meson \
+        ninja-build \
+        pkg-config \
         texinfo \
         zlib1g-dev \
         nasm \
         yasm \
+        wget \
+        libunistring-dev \
         libx264-dev \
         libx265-dev \
         libnuma-dev \
         libvpx-dev \
         libfdk-aac-dev \
         libmp3lame-dev \
-        libopus-dev && \
+        libopus-dev \
+        libunistring-dev \
+        libaom-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
@@ -117,6 +130,7 @@ RUN apt-get update && \
     libvorbis-dev \
     libopus-dev \
     libdc1394-22-dev \
+    libva-dev \
     liblzma-dev && \
     rm -rf /var/lib/apt/lists/*
 

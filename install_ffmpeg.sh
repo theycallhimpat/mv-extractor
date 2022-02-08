@@ -20,6 +20,7 @@ cd "$INSTALL_BASE_DIR"/ffmpeg_sources/ffmpeg
 export FFMPEG_INSTALL_DIR="$INSTALL_BASE_DIR/ffmpeg_sources/ffmpeg"
 export FFMPEG_PATCH_DIR="$INSTALL_DIR/ffmpeg_patch"
 
+echo "Patching ffmpeg"
 chmod +x "$FFMPEG_PATCH_DIR"/patch.sh
 "$FFMPEG_PATCH_DIR"/patch.sh
 
@@ -31,11 +32,11 @@ cd "$INSTALL_BASE_DIR"/ffmpeg_sources/ffmpeg && \
 ./configure \
 --prefix="$INSTALL_BASE_DIR/ffmpeg_build" \
 --pkg-config-flags="--static" \
---extra-cflags="-I$INSTALL_BASE_DIR/ffmpeg_build/include -I/usr/local/include -static" \
---extra-ldflags="-L$INSTALL_BASE_DIR/ffmpeg_build/lib -static" \
+--extra-cflags="-I$INSTALL_BASE_DIR/ffmpeg_build/include " \
+--extra-ldflags="-L$INSTALL_BASE_DIR/ffmpeg_build/lib " \
 --extra-libs="-lpthread -lm" \
+--ld="g++" \
 --bindir="$INSTALL_BASE_DIR/bin" \
---disable-opencl \
 --enable-gpl \
 --enable-libfreetype \
 --enable-libmp3lame \
@@ -45,6 +46,7 @@ cd "$INSTALL_BASE_DIR"/ffmpeg_sources/ffmpeg && \
 --enable-libx264 \
 --enable-nonfree \
 --enable-pic 
+
 
 echo "Compiling ffpmeg"
 make -j $(nproc) && \
