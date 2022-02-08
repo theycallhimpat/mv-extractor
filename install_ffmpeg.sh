@@ -26,8 +26,6 @@ chmod +x "$FFMPEG_PATCH_DIR"/patch.sh
 
 # Compile FFMPEG
 echo "Configuring ffpmeg"
-echo $PKG_CONFIG_PATH
-#export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/lib/aarch64-linux-gnu/pkgconfig/"
 cd "$INSTALL_BASE_DIR"/ffmpeg_sources/ffmpeg && \
 ./configure \
 --prefix="$INSTALL_BASE_DIR/ffmpeg_build" \
@@ -47,9 +45,7 @@ cd "$INSTALL_BASE_DIR"/ffmpeg_sources/ffmpeg && \
 --enable-nonfree \
 --enable-pic 
 
-
 echo "Compiling ffpmeg"
 make -j $(nproc) && \
 make install && \
 hash -r
-

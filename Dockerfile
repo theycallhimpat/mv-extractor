@@ -42,7 +42,6 @@ RUN apt-get update -qq --fix-missing && \
         libdc1394-22-dev && \
     rm -rf /var/lib/apt/lists/*
 
-
 COPY install.sh /home/video_cap
 
 # Install dependencies
@@ -156,23 +155,9 @@ WORKDIR /home/video_cap
 COPY setup.py /home/video_cap
 COPY src /home/video_cap/src/
 
-#RUN apt-get update && \
-#  DEBIAN_FRONTEND=noninteractive apt-get -yq install software-properties-common && \
-#  add-apt-repository ppa:deadsnakes/ppa && \
-#  DEBIAN_FRONTEND=noninteractive apt-get -yq install \
-#    python3.8 \
-#    python3.8-distutils \
-#    python3.8-dev && \
-#    rm -rf /var/lib/apt/lists/*
-
-# https://stackoverflow.com/questions/65640476/pip3-on-python3-9-fails-on-htmlparser-object-has-no-attribute-unescape
-#RUN python3.8 -m pip install --upgrade setuptools pip distlib
-#RUN python3.8 -m pip install numpy==1.17.5
 RUN python3 -m pip install numpy==1.17.5
 
 # Install Python package
 COPY vid.mp4 /home/video_cap
 RUN cd /home/video_cap && \
   python3 setup.py install
-
-#CMD ["sh", "-c", "tail -f /dev/null"]
