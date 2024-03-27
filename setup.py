@@ -34,5 +34,5 @@ setup (name = 'mv_extractor',
        packages = ['mv_extractor'],
        package_dir = {'mv_extractor': 'src'},
        python_requires='>=3.6, <3.12',
-       setup_requires=['wheel>=0.33.6', 'numpy>=1.17.0,<1.18'],
-       install_requires=['pkgconfig>=1.5.1,<1.6', 'numpy>=1.17.0,<1.18'])
+       setup_requires=['wheel>=0.33.6', 'numpy>=1.17.0'],
+       install_requires=['pkgconfig>=1.5.1,<1.6', 'numpy>=1.17.0'])

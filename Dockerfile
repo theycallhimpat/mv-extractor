@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 AS builder
+FROM ubuntu:22.04 AS builder
 
 WORKDIR /home/video_cap
 
@@ -39,7 +39,7 @@ RUN apt-get update -qq --fix-missing && \
         openexr \
         libtbb2 \
         libtbb-dev \
-        libdc1394-22-dev && \
+        libdc1394-dev && \
     rm -rf /var/lib/apt/lists/*
 
 COPY install.sh /home/video_cap
@@ -103,7 +103,7 @@ RUN apt-get update && \
   gdb \
   python3-dbg
 
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # install Python
 RUN apt-get update && \
@@ -128,7 +128,7 @@ RUN apt-get update && \
     libvdpau-dev \
     libvorbis-dev \
     libopus-dev \
-    libdc1394-22-dev \
+    libdc1394-dev \
     libva-dev \
     liblzma-dev && \
     rm -rf /var/lib/apt/lists/*
@@ -155,9 +155,11 @@ WORKDIR /home/video_cap
 COPY setup.py /home/video_cap
 COPY src /home/video_cap/src/
 
-RUN python3 -m pip install numpy==1.17.5
+RUN python3 -m pip install numpy==1.23.3
 
 # Install Python package
 COPY vid.mp4 /home/video_cap
 RUN cd /home/video_cap && \
   python3 setup.py install
+
+RUN python3 -m pip install tzdata
